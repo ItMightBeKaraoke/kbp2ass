@@ -22,11 +22,12 @@ const stringifyDescriptor = {
 
 function stringifySection(section: TSection) {
   const head = "[" + section.section + "]";
-  let format = null;
+  let format: IFormatKV["value"] | TSection["body"][number] | null = null;
 
   const body = section.body
     .map(descriptor => {
       const method =
+        // @ts-ignore
         descriptor.type == "comment"
           ? "comment"
           : descriptor.key == "Format"
@@ -36,9 +37,10 @@ function stringifySection(section: TSection) {
           : "raw";
 
       if (method == "formatSpec") {
+        // @ts-ignore
         format = descriptor.value;
       }
-
+      // @ts-ignore
       return stringifyDescriptor[method](descriptor, format);
     })
     .join("\n");

@@ -8,6 +8,7 @@
     "kbp2ass": "dist/index.js"
   },
   "scripts": {
+    "check": "tsc --noEmit",
     "build": "tsc --build",
     "start": "tsc --build && ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
+    "@types/yargs": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.14.0",
